@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodTunes | Your Music, Your Soul</title>
+    <link rel="stylesheet" href="moodtunes_1.css">
+</head>
+<body>
+
+    <div id="loading-overlay">
+        <div class="vinyl"></div>
+        <p>Analizando tu estado de ánimo...</p>
+    </div>
+
+    <nav>
+        <div class="logo">MoodTunes</div>
+        <ul class="nav-links">
+            <li><a href="#hero-section">Inicio</a></li>
+            <li><a href="#survey-anchor">Encuesta</a></li>
+        </ul>
+        <button class="btn-login" onclick="app.scrollTo('survey-anchor')">Comenzar</button>
+    </nav>
+
+    <section class="hero" id="hero-section">
+        <div class="hero-tag"> POWERED</div>
+        <h1>Tu música,<br>tu <span>estado mental</span></h1>
+        <p>Cuéntanos cómo te sientes hoy y te daremos las canciones perfectas para este momento preciso de tu vida.</p>
+        <div class="hero-cta">
+            <button class="btn-primary" onclick="app.scrollTo('survey-anchor')">Descubrir mi playlist →</button>
+        </div>
+    </section>
+
+    <div id="survey-anchor"></div>
+    <section class="section">
+        <div class="survey-card">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+
+            <div class="question-screen active" id="q1">
+                <div class="question-num">Paso 1 de 4</div>
+                <div class="question-text">¿Cómo te sientes ahora mismo?</div>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="app.selectOption(this,'mood','feliz')"> Feliz</button>
+                    <button class="option-btn" onclick="app.selectOption(this,'mood','melancolico')"> Melancólico</button>
+                </div>
+            </div>
+
+            <div class="question-screen" id="q2">
+                <div class="question-num">Paso 2 de 4</div>
+                <div class="question-text">¿Nivel de energía?</div>
+                <div class="energy-slider-wrap">
+                    <input type="range" min="1" max="10" value="5" id="energy-slider" oninput="app.updateEnergy()">
+                    <div id="energy-value">5 / 10</div>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <button class="btn-primary" onclick="app.nextQuestion(3)">Confirmar Energía →</button>
+                </div>
+            </div>
+
+            <div class="question-screen" id="q3">
+                <div class="question-num">Paso 3 de 4</div>
+                <div class="question-text">¿Qué estás haciendo?</div>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="app.selectOption(this,'context','trabajando')"> Trabajando</button>
+                    <button class="option-btn" onclick="app.selectOption(this,'context','relajado')"> Descansando</button>
+                </div>
+            </div>
+
+            <div class="question-screen" id="q4">
+                <div class="question-num">Paso 4 de 4</div>
+                <div class="question-text">¿Género favorito?</div>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="app.selectOption(this,'genre','pop')">🎤 Pop</button>
+                    <button class="option-btn" onclick="app.selectOption(this,'genre','rock')">🎸 Rock</button>
+                </div>
+            </div>
+
+            <div id="result-screen" style="display: none; text-align: center;">
+                <h2 style="color: #1ed760; margin-bottom: 15px;">¡Playlist lista!</h2>
+                <div id="result-content"></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="moodtunes_1.js"></script>
+</body>
+</html>
